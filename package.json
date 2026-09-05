@@ -1,0 +1,32 @@
+{
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push"
+  },
+  "type": "module",
+  "dependencies": {
+    "@fastify/swagger": "^9.8.1",
+    "@fastify/swagger-ui": "^6.1.1",
+    "bcrypt-ts": "^9.0.2",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "fastify-type-provider-zod": "^7.0.0",
+    "http-status-codes": "^2.3.0",
+    "pg": "^8.23.0",
+    "ws": "^8.21.3",
+    "zod": "^4.5.4",
+    "zod-openapi": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.1",
+    "@types/pg": "^8.23.1",
+    "@types/ws": "^8.18.1",
+    "drizzle-kit": "^0.31.10",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
