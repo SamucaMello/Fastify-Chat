@@ -2,12 +2,11 @@ FROM node:22-trixie-slim
 
 WORKDIR /app
 
-
-COPY package*.json ./
+COPY . .
 RUN npm install
 
-COPY . .
 
-EXPOSE 3000
+ARG PORT=3000
+EXPOSE ${PORT}
 
 CMD ["sh", "-c", "npm run db:migrate && npm run dev"]
