@@ -35,7 +35,7 @@ class App {
         await this.app.register(swagger, {
             openapi: {
                 info: {
-                    title: "Chat com TypeScript",
+                    title: "Chat com Fastify",
                     version: "1.0.0",
                 },
             },
@@ -48,10 +48,10 @@ class App {
     }
 
 
-    public start() {
+    public async start() {
         try {
-            this.app.listen({ port: PORT, host: "0.0.0.0" }, console.warn)
-            console.warn(`Servidor iniciado na porta ${PORT}`)
+            const host = await this.app.listen({ port: PORT, host: "0.0.0.0" })
+            console.warn(`Servidor iniciado em ${host}`)
         }
         catch (err) {
             this.app.log.error(err);

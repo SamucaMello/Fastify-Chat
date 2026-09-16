@@ -6,7 +6,7 @@ const create_database_url = () => `postgresql://${environment.POSTGRES_USER}:${e
 
 
 export const DATABASE_URL = create_database_url()
-export const PORT         = environment.PORT ?? 3000
+export const PORT         = Number(environment.PORT) ?? 3000
 
 
 
