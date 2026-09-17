@@ -46,7 +46,7 @@ export class UserRepository {
     }
 
     static async getByEmail(email:string):Promise<SafeUser | undefined> {
-        const [user] = await db.select().from(users).where(eq(users.email, email))
+        const [user] = await db.select(safeFields).from(users).where(eq(users.email, email))
         return user
     }
 }

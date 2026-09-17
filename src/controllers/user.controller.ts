@@ -35,7 +35,7 @@ export class UserController {
     }
 
     static async findAll(req:FastifyRequest<{Params: PaginationInput}>, reply:FastifyReply){
-        const users = UserService.findAll(req.params)
+        const users = await UserService.findAll(req.params)
         return reply.status(StatusCodes.OK).send({
             users
         })
