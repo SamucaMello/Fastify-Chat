@@ -1,4 +1,4 @@
-import Fastify, { type FastifyInstance } from "fastify"
+import Fastify, { type FastifyInstance, type InjectOptions } from "fastify"
 
 import {
     jsonSchemaTransform,
@@ -16,20 +16,18 @@ import swagger from "@fastify/swagger"
 export class App {
     private app: FastifyInstance
 
-    constructor(opt = {useSwagger: true}) {
+    constructor(opt = { useSwagger: true }) {
         this.app = Fastify().withTypeProvider<ZodTypeProvider>()
         this.app.setValidatorCompiler(validatorCompiler);
         this.app.setSerializerCompiler(serializerCompiler);
 
-        if (opt.useSwagger){
+        if (opt.useSwagger) {
             this.useSwagger()
         }
         this.registerRoutes()
     }
 
-    public getApp() {return app};
-
-    private registerRoutes(){
+    private registerRoutes() {
         this.app.register(mainRouter, { prefix: "/" })
     }
 
@@ -61,7 +59,20 @@ export class App {
         }
     }
 
+    public async ready() {
+        return this.app.ready()
+    }
+
+    public async close() {
+        return this.app.close()
+    }
+
+    public async inject(opts: InjectOptions) {
+        return this.app.inject(opts)
+    }
+
+
 }
 
-const app = new App({useSwagger:true})
+const app = new App({ useSwagger: true })
 app.start()
