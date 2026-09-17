@@ -13,7 +13,7 @@ import { mainRouter } from "./src/routes/router.js";
 import swaggerUi from "@fastify/swagger-ui";
 import swagger from "@fastify/swagger"
 
-class App {
+export class App {
     private app: FastifyInstance
 
     constructor(opt = {useSwagger: true}) {
@@ -26,6 +26,8 @@ class App {
         }
         this.registerRoutes()
     }
+
+    public getApp() {return app};
 
     private registerRoutes(){
         this.app.register(mainRouter, { prefix: "/" })
