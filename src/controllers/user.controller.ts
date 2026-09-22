@@ -26,7 +26,7 @@ export class UserController {
     }
 
     static async update(req:FastifyRequest<{Params: IdParamsInput, Body:UpdateUserInput}>, reply:FastifyReply){
-        const user = await UserService.update(req.id, req.body)
+        const user = await UserService.update(req.params.id, req.body)
         return reply.status(StatusCodes.OK).send({
             message: "Usuário atualizado com sucesso",
             user
