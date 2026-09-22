@@ -19,7 +19,7 @@ export class UserController {
     }
 
     static async delete(req:FastifyRequest<{Params: IdParamsInput}>, reply:FastifyReply){
-        await UserService.delete(req.id)
+        await UserService.delete(req.params.id)
         return reply.status(StatusCodes.OK).send({
             message: "Usuário apagado com sucesso"
         })

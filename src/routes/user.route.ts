@@ -24,5 +24,9 @@ export const userRoutes: FastifyPluginAsyncZod = async (fastify) => {
         schema: {body: updateSchema}
     }, UserController.update)
 
+    fastify.delete("/:id", {
+        schema: {params: idSchema}
+    }, UserController.delete)
+
 }
 
