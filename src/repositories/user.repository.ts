@@ -31,7 +31,7 @@ export class UserRepository {
     }
 
     static async create(data: RegisterUserInput): Promise<SafeUser | undefined> {
-        const [user] = await db.insert(users).values(data).returning()
+        const [user] = await db.insert(users).values(data).returning(safeFields)
         return user
     }
 
