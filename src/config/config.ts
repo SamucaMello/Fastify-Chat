@@ -3,9 +3,13 @@ import { configDotenv } from "dotenv"; configDotenv({quiet: true});
 const environment = process.env;
 
 const create_database_url = () => {
-    const host = process.argv.includes("--dev") ? "localhost" : "db"
-    
-    return `postgresql://${environment.POSTGRES_USER}:${environment.POSTGRES_PASSWORD}@${host}:5432/${environment.POSTGRES_DB}`
+    const user      = environment.POSTGRES_USER
+    const password  = environment.POSTGRES_PASSWORD 
+    const host      = environment.POSTGRES_HOST
+    const db        = environment.POSTGRES_DB
+    const port      = environment.POSTGRES_PORT 
+
+    return `postgresql://${user}:${password}@${host}:${port}/${db}`
 }
 
 
