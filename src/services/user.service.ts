@@ -25,14 +25,13 @@ export class UserService {
     }
 
     static async findById(id:any){
-        return await UserRepository.findById(id)
+        const user = await UserRepository.findById(id)
+        if (!user)
+            throw new ApplicationError("O usuário não existe");
+        return user
     }
     
     static async update(id:any, updates:UpdateUserInput) {
-        const exists = await this.findById(id)
-        if (!exists)
-            throw new ApplicationError("O usuário não existe");
-
         const usingEmail = await UserRepository.getByEmail(updates.email!)
         if (usingEmail && usingEmail.id != id)
             throw new ApplicationError("Alguém já possui esse e-mail");
