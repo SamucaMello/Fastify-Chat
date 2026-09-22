@@ -23,10 +23,7 @@ export class UserRepository {
     }
 
     static async findById(id: number): Promise<SafeUser | undefined> {
-        const [user] = await db
-            .select(safeFields)
-            .from(users)
-            .where(eq(users.id, id));
+        const [user] = await db.select(safeFields).from(users).where(eq(users.id, id))
         return user;
     }
 

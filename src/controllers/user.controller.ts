@@ -41,8 +41,8 @@ export class UserController {
         })
     }
     
-    static async findById(req:FastifyRequest<{Params: IdParamsInput}>, res:FastifyReply){
-        const user  = await UserService.findById(req.id)
-        return res.status(StatusCodes.OK).send(user)
+    static async findById(req:FastifyRequest<{Params: IdParamsInput}>, reply:FastifyReply){
+        const user  = await UserService.findById(req.params.id)
+        return reply.status(StatusCodes.OK).send(user)
     }
 }
