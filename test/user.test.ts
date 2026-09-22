@@ -22,9 +22,9 @@ describe('Rotas de alunos', () => {
   })
 
   it("deve criar um usuário",async ()=>{
-
+    
     const payloadUsuario:RegisterUserInput = {
-      email: `usuario_ficticio1q111@gmail.com`,
+      email: `ficticio_${Math.random().toString(36)}@gmail.com`,
       password: "senha1234",
       name: "usuario ficticio",
     }
@@ -57,7 +57,7 @@ describe('Rotas de alunos', () => {
     const response = await app.inject({
       method: "PUT",
       url: `/user/${usuarioCriado.id}`,
-      body: {email: "email_atualizado11q3211@gmail.com"}
+      body: {email: `email_atualizado${Math.random().toString(36)}@gmail.com`}
     })
     expect(response.statusCode).toBe(StatusCodes.OK)
   })
