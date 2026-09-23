@@ -55,7 +55,7 @@ export class App {
         }
         catch (err) {
             this.app.log.error(err);
-            process.exit(1);
+            //process.exit(1);
         }
     }
 
